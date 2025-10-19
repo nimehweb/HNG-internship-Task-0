@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile — Adeyemi Emmanuel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <article class="profile-card" aria-labelledby="profile-name" data-test-id="test-profile-card">
+        <header class="profile-header">
+            <figure class="avatar" aria-hidden="false">
+                <img
+                  src="assets/f7ab95b567b252604ae8c031e758f546.jpg"
+                  alt="Adeyemi Emmanuel — portrait"
+                  loading="lazy"
+                  data-test-id="test-profile-pic"
+                >
+            </figure>
+
+            <div class="profile-meta">
+                <h1 id="profile-name">Adeyemi Emmanuel</h1>
+                <p class="role">Frontend Developer</p>
+            </div>
+        </header>
+        <hr>
+        <p class="bio" data-test-id="test-user-bio">
+            I'm a frontend developer skilled in HTML, CSS, JavaScript, React.js, and Tailwind CSS. I build responsive, accessible, component-driven interfaces and optimize performance for smooth user experiences.
+        </p>
+
+        <div class="timestamp-badge" id="timestamp-badge" aria-live="polite">
+          <span class="clock-icon" aria-hidden="true">⏰</span>
+          <span data-testid="test-user-time" id="user-time">—</span>
+        </div>
+
+        <div class="connect" aria-label="Connect with Adeyemi">
+            <h3 class="sr-only">Connect with me</h3>
+            <ul>
+                <li><a href="https://www.linkedin.com/in/adeyemi-emmanuel-a36bb71a0/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="https://github.com/adeyemie" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="https://twitter.com/adeyemie" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+            </ul>
+        </div>
+
+        <section class="additionals">
+            <div>
+                <h3>Hobbies</h3>
+                <ul>
+                    <li>Coding</li>
+                    <li>Reading tech blogs</li>
+                    <li>Football</li>
+                    <li>Learning new things</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Dislikes</h3>
+                <ul>
+                    <li>Bugs and issues</li>
+                    <li>Long meetings</li>
+                    <li>Being broke</li>
+                </ul>
+            </div>
+        </section>
+    </article>
+
+    <script>
+    (function () {
+      const el = document.getElementById('user-time');
+      if (!el) return;
+      function updateTime() {
+        const now = new Date();
+        // e.g. Oct 19, 2025 · 09:05 AM
+        const opts = { month: 'short', day: 'numeric', year: 'numeric' };
+        const date = now.toLocaleDateString(undefined, opts);
+        const time = now.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+        el.textContent = `${date} · ${time}`;
+      }
+      updateTime();
+      setInterval(updateTime, 60_000);
+    })();
+    </script>
+</body>
+</html>
