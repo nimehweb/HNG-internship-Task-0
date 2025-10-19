@@ -2,55 +2,64 @@
   --card-bg: #fff;
   --muted: #6b7280;
   --accent: #2563eb;
-  --radius: 12px;
+  --radius: 16px;
   --gap: 1rem;
   --max-w: 720px;
-  --shadow: 0 6px 18px rgba(16,24,40,0.08);
+  --shadow: 0 10px 30px rgba(16,24,40,0.08);
   --glass: rgba(255,255,255,0.6);
+  --page-pad: clamp(1rem, 4vw, 3rem);
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
 *{box-sizing:border-box}
-html,body{height:100%}
+html,body{min-height:100vh}
 body{
   margin:0;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:2rem;
+  padding:var(--page-pad);
   background:linear-gradient(180deg,#f3f4f6,#ffffff);
   color:#0f172a;
 }
 
-article{
-    padding: 40px;
-    background-color: white;
-    border-radius: 25px;
-    width: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-
+.profile-card{
+    padding: clamp(1rem, 3.5vw, 2.5rem);
+    background-color: var(--card-bg);
+    border-radius: var(--radius);
+    width: 100%;
+    max-width: var(--max-w);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(15,23,42,0.04);
+    display:flex;
+    flex-direction:column;
+    gap:var(--gap);
 }
-
 
 /* header */
 .profile-header{
   display:flex;
   gap:1rem;
   align-items:center;
+  justify-content:flex-start;
+  flex-wrap:wrap;
 }
 
 .avatar img{
-  width:150px;
-  height: 150px;
+  width: clamp(64px, 18vw, 150px);
+  height: clamp(64px, 18vw, 150px);
+  aspect-ratio: 1/1;
   object-fit:cover;
+  object-position:center;
   border-radius:50%;
   display:block;
   border:1px solid rgba(15,23,42,0.06);
+  background: linear-gradient(180deg,#eef2ff, #ffffff);
 }
 
 .profile-meta h1{
   margin:0;
-  font-size:1.5rem;
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
   letter-spacing:0.02em;
   font-weight:700;
   text-transform:uppercase;
@@ -64,10 +73,19 @@ article{
 
 /* bio */
 .bio{
+  margin:0;
   margin-top: 10px;
   color:#0b1724;
-  line-height:1.45;
-  font-size:0.975rem;
+  line-height:1.5;
+  font-size:clamp(0.9rem, 1.6vw, 1rem);
+}
+
+/* hr */
+hr{
+  border:0;
+  height:1px;
+  background:linear-gradient(90deg, rgba(15,23,42,0.4), rgba(15,23,42,0.2));
+  margin: 0.25rem 0;
 }
 
 /* timestamp badge */
@@ -81,6 +99,7 @@ article{
   border-radius:999px;
   font-size:0.875rem;
   width:max-content;
+  margin-top: 0.25rem;
 }
 
 /* connect links */
@@ -97,7 +116,7 @@ article{
   padding:0;
   margin:0.25rem 0 0;
   display:flex;
-  gap:0.75rem;
+  gap:0.5rem;
   flex-wrap:wrap;
 }
 
@@ -108,14 +127,21 @@ article{
   padding:0.35rem 0.6rem;
   border-radius:8px;
   font-weight:600;
-  transition:transform .12s ease, box-shadow .12s ease;
+  transition:transform .12s ease, box-shadow .12s ease, background .12s;
+  display:inline-flex;
+  align-items:center;
+  gap:0.45rem;
 }
 
-.connect a:hover{
-     transform:translateY(-2px);
-      box-shadow:0 6px 14px rgba(37,99,235,0.08);
-
+.connect a:hover{ 
+    transform:translateY(-3px); 
+    box-shadow:0 8px 20px rgba(37,99,235,0.07);
  }
+.connect a:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+  border-radius:8px;
+}
 
 /* additionals */
 .additionals{
@@ -126,17 +152,37 @@ article{
 }
 
 .additionals div{
-    padding: 10px;
+    padding: 6px 4px;
 }
-.additionals h3{ margin:0 0 0.5rem 0; font-size:0.95rem; }
-.additionals ul{ margin:0; padding-left:1.1rem; color:var(--muted); }
-
+.additionals h3{ 
+    margin:0 0 0.5rem 0;
+     font-size:0.95rem;
+     }
+.additionals ul{ 
+    margin:0;
+     padding-left:1.1rem;
+      color:var(--muted);
+     }
 
 
 /* responsive */
+@media (max-width:760px){
+  .profile-header{
+    padding-top: 0;
+    flex-direction:row;
+    align-items:center;
+  }
+  .additionals{
+     grid-template-columns:1fr;
+  }
+}
+
 @media (max-width:560px){
-  .profile-header{ gap:0.75rem; }
-  .avatar img{ width:64px; height:64px; border-radius:10px; }
-  .additionals{ grid-template-columns:1fr; }
-  :root{ --max-w:420px; }
+  .profile-header{ 
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:0.5rem;
+  }
+  .timestamp-badge{ align-self:center; }
 }
