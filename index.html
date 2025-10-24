@@ -7,11 +7,19 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div>
+    <nav class="nav">
+       <div><a href="index.html " aria-current="page">Home</a></div>
+       <div><a href="about.html">About</a></div>
+       <div><a href="contact.html">Contact</a></div>
+    </nav>
+    </div>
+    
     <article class="profile-card" aria-labelledby="profile-name" data-test-id="test-profile-card">
         <header class="profile-header">
             <figure class="avatar" aria-hidden="false">
                 <img
-                  src="assets/WhatsApp Image 2025-10-10 at 5.36.49 PM.jpeg"
+                  src="assets/WhatsApp Image 2025-10-10 at 5.08.05 PM.jpeg"
                   alt="Adeyemi Emmanuel — portrait"
                   loading="lazy"
                   data-test-id="test-profile-pic"
@@ -76,7 +84,7 @@
         el.textContent = `${date} · ${time}`;
       }
       updateTime();
-      setInterval(updateTime, 60_000);
+      setInterval(updateTime, 1000);
     })();
     </script>
 </body>

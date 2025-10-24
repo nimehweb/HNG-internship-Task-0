@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Me — Adeyemi Emmanuel</title>
+    <link rel="stylesheet" href="about.css" />
+  </head>
+  <body>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html" aria-current="page">About Me</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <main data-testid="test-about-page">
+      <article class="profile-card">
+        <h1 class="title">About Me</h1>
+
+        <section data-testid="test-about-bio">
+          <h2>Who I Am</h2>
+          <p>
+            I’m Adeyemi Emmanuel, a Frontend Developer and Computer Science
+            student at the University of Ilorin. I enjoy creating clean,
+            responsive, and accessible web interfaces that blend good design
+            with solid code. My journey into web development started from
+            curiosity — wanting to understand how the websites I used daily were
+            built.
+          </p>
+        </section>
+
+        <section data-testid="test-about-goals">
+          <h2>Goals in This Program</h2>
+          <p>
+            My main goal in this program is to deepen my frontend development
+            skills and learn to work efficiently in real-world, collaborative
+            environments. I want to sharpen my problem-solving skills, build
+            more structured projects, and understand how to turn design ideas
+            into functional, high-quality user experiences.
+          </p>
+        </section>
+        <section
+          id="tools"
+          class="tools-section hidden"
+          data-testid="test-tools-section"
+        >
+          <h2>🧰 Tools I Work With</h2>
+          <ul class="tools-list">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>React</li>
+            <li>Git & GitHub</li>
+            <li>Firebase</li>
+            <li>Supabase</li>
+          </ul>
+        </section>
+
+        <section data-testid="test-about-confidence"
+        class="hidden"
+        >
+          <h2>Areas of Low Confidence</h2>
+          <p>
+            I’m still building confidence in advanced JavaScript concepts and
+            backend integration. Sometimes I overthink design choices or spend
+            too much time trying to make things “perfect.” But I’m learning to
+            focus more on progress and consistency.
+          </p>
+        </section>
+
+        <section data-testid="test-about-future-note"
+        class="hidden"
+        >
+          <h2>Note to Future Self</h2>
+          <p>
+            Dear future Emmanuel, keep building. Remember that every error, bug,
+            and failed attempt was part of your growth. Stay humble, keep
+            learning, and don’t forget the passion that made you start. Be
+            consistent — and always celebrate your small wins.
+          </p>
+        </section>
+
+        <section data-testid="test-about-extra"
+        class="hidden"
+        >
+          <h2>Extra Thoughts</h2>
+          <p>
+            Beyond code, I’m passionate about teaching, mentoring, and
+            contributing to the tech community. I believe the best developers
+            aren’t just problem solvers — they’re learners who never stop
+            sharing.
+          </p>
+        </section>
+      </article>
+    </main>
+  </body>
+  <script>
+     const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target); // optional: stops observing once shown
+      }
+    });
+  });
+
+  const hiddenElements = document.querySelectorAll('.hidden');
+  hiddenElements.forEach(el => observer.observe(el));
+  </script>
+
+</html>
